@@ -20,6 +20,12 @@ object Functions {
     def fac: Int => Int = n => if (n == 0) 1 else n * fac(n - 1)
 
     def fac2: Int => Int = n => List.range(1, n + 1).product
+    
+    // tail-recursive factorial implementation
+    def facTail: Int => Int = n => {
+        def facHelp: (Int, Int) => Int = (i, k) => if (i == 0) k else facHelp(i - 1, i * k)
+        facHelp(n, 1)
+    }
 
     def quadraticEquation: (Double, Double, Double) => List[Double] = (a, b, c) => {
         val x_1 = (-b + math.sqrt(square(b) - 4 * a * c)) / (2 * a)
